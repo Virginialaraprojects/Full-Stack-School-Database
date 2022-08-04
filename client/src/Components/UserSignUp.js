@@ -33,7 +33,7 @@ const UserSignUp = () => {
                 console.log(`${firstName} is successfully resgistered!`)
             }
         })
-        .catch(err =>{console.log(err);
+        .catch((err) =>{console.log(err);
         })
     }
 
