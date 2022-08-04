@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Cookies from 'js-cookie';
-import Data from "./Data";
+import Data from "./Data";// import the data file with the helper class
 
 export const Context = React.createContext();
 
@@ -14,7 +14,7 @@ export class Provider extends Component{
 
     constructor() {
         super();
-        this.data =new Data();
+        this.data =new Data();// intialize a new instance of Data class and assign a property 
         this.cookie = Cookies.get('authenticatedUser');
         this.state ={
             authenticatedUser :this.cookie ? JSON.parse(this.cookie) : null
@@ -60,6 +60,11 @@ export class Provider extends Component{
     }
 export const Consumer =Context.Consumer;
 
+/**
+ * A higher-order component that wraps the provided component in a Context Consumer component.
+ * @param {class} Component - A React component.
+ * @returns {function} A higher-order component.
+ */
 export default function withContext(Component){
     return function ContextComponent(props){
         return(

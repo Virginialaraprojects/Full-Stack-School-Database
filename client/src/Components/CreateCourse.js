@@ -36,6 +36,8 @@ const submit =() =>{
                 history.push('/')
             }
         })
+        //.catch((err) =>{console.log(err)
+        //});
 
 }
 
@@ -51,7 +53,7 @@ const change =(e)=>{
         setMaterialsNeeded(e.target.value)
     }
 }
-//allows user to cancel and return to default
+//redirects the user back to home route if cancels the course form.
 const cancel =()=>{
     history.push('/');
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-
+//exports a function that renders any validation errors sent from API
 export default function Form (props) {
     const{
         cancel,
@@ -18,7 +18,7 @@ export default function Form (props) {
         event.preventDefault();
         cancel();
     }
-
+    //renders a submit and cancel button and thier functionality via the functions above.
     return( 
     <div>
         <ErrorsDisplay errors={errors} />
@@ -33,7 +33,7 @@ export default function Form (props) {
       );
 
 }
-
+// renders the validation errors
 function ErrorsDisplay({ errors }){
     let errorsDisplay =null;
 

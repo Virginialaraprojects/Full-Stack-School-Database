@@ -36,7 +36,7 @@ const change =(e)=> {
     }
 }
 
-//allows user to cancel and returns user to default
+//redirects the user back to home route if cancels the form.
 const cancel=()=>{
     history.push('/')
 }

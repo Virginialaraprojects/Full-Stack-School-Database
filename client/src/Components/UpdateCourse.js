@@ -68,7 +68,7 @@ const submit =()=> {
     }
  }  
 
-//allows user to cancel and return to default
+//redirects the user back to home route if cancels the courses form.
 const cancel =()=>{
     history.push('/');
 }

@@ -14,7 +14,7 @@ const UserSignUp = () => {
     const[password, setPassword] = useState();
     const[errors, setErrors] = useState([]);
 
-    //Submits info of new user
+    //Creates a new user and send the credentials to the API
     const submit =()=>{
         const user ={
             firstName,
@@ -25,7 +25,7 @@ const UserSignUp = () => {
         context.data.createUser(user)
         .then (errors =>{
             if(errors.length){
-                setErrors(errors);
+                setErrors(errors);// UPDATE the errors state if there are errors
             }else{
                 context.actions.signIn(user.emailAddress, user.password)
                     .then(()=>{history.push('/')
@@ -33,7 +33,8 @@ const UserSignUp = () => {
                 console.log(`${firstName} is successfully resgistered!`)
             }
         })
-        .catch((err) =>{console.log(err);
+        .catch((err) =>{ //handle rejected promise
+            console.log(err);
         })
     }
 
@@ -50,7 +51,7 @@ const UserSignUp = () => {
         }
     }
 
-     // allows user to cancel and returns to default
+     //redirects the user back to home route if cancels the form.
      const cancel =()=>{
         history.push('/');
     }
