@@ -1,29 +1,38 @@
-import React, { Component } from "react";
+import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
+import { Context } from '../Context';
 
 
 const Header =() =>{
+    const { authenticatedUser } = useContext(Context);
 
-
-
+//renders the top menu button for signing in, signup and signing out
 return(
     <header>
-            <div class="wrap header--flex">
-                <h1 class="header--logo"><a href="index.html">Courses</a></h1>
+            <div className="wrap header--flex">
+                <h1 className="header--logo"><Link to="/">Courses</Link></h1>
                 <nav>
-                    <ul class="header--signedout">
-                        <li><a href="sign-up.html">Sign Up</a></li>
-                        <li><a href="sign-in.html">Sign In</a></li>
+                {authenticatedUser?
+                <React.Fragment>
+                    <ul className="header--signedin">
+                        <li>
+                            Welcome {authenticatedUser.user.firstName}
+                        </li>
+                        <li><Link to="/signout">Sign Out</Link></li>
                     </ul>
+                </React.Fragment>
+                :
+                <React.Fragment>
+                <ul className="header--signedout">
+                        <li><Link to="/signup">Sign Up</Link></li>
+                        <li><Link to="/signin">Sign In</Link></li>
+                    </ul>
+                </React.Fragment>
+                }
                 </nav>
             </div>
         </header>
 )
-
-
-
-
-
-
 
 };
 

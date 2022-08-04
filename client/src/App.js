@@ -1,5 +1,6 @@
 import React from 'react';
-import './App.css';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { Provider } from './Context';
 
 /* Components */
 import Courses from './Components/Courses';
@@ -11,37 +12,45 @@ import UpdateCourse from './Components/UpdateCourse';
 import Header from './Components/Header';
 import UserSignOut from './Components/UserSignOut';
 
+//Passes App context to Components
+import withContext from './Context';
+import PrivateRoute from './PrivateRoute';
+
+const HeaderWithContext =withContext(Header);
+const CreateCourseWithContext = withContext(CreateCourse);
+const UpdateCourseWithContext = withContext(UpdateCourse);
+const CourseDetailWithContext =withContext(CourseDetail);
+const UserSignInWithContext = withContext(UserSignIn);
+const UserSignUpWithContext = withContext(UserSignUp);
+const UserSignOutWithContext = withContext(UserSignOut);
+
 function App() {
   
-    fetch('http://localhost:5000/api/courses')
-      .then(res =>res.json())
-      .then(data =>{console.log(data)})
-      return (
- 
-          <div  className="App">
-            New course
-            <ul></ul>
-          </div>
-        
+
+// App routes
+  return(
+    <Provider>
+      <Router>
+        <div id ="root">
+        <HeaderWithContext/>
+          <Switch>
+            <Route exact path="/" component={Courses} />
+            <PrivateRoute exact path="courses/create" component={CreateCourseWithContext}/>
+            <PrivateRoute exact path="/courses/:id/update" component={UpdateCourseWithContext}/>
+            <Route exact path ="/courses/:id" component={CourseDetailWithContext}/>
+            <Route exact path="/signin" component={UserSignInWithContext}/>
+            <Route exact path="/signup" component={UserSignUpWithContext}/>
+            <Route exact path="/signout" component={UserSignOutWithContext}/>
+          </Switch>
+        </div>
+      </Router>
+    </Provider>
+
+
   );
 }
 
 export default App;
 
-/*<div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>*/
+
     
