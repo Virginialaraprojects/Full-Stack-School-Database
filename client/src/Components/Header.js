@@ -16,7 +16,7 @@ return(
                 <React.Fragment>
                     <ul className="header--signedin">
                         <li>
-                            Welcome {authenticatedUser.user.firstName}
+                            Welcome {authenticatedUser.firstName}
                         </li>
                         <li><Link to="/signout">Sign Out</Link></li>
                     </ul>

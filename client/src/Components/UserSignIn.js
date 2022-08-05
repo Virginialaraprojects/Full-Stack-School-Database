@@ -17,14 +17,15 @@ const [errors, setErrors] = useState([]);
             .then(user =>{
                 if(user === null){
                     setErrors(()=>{
-                        return{errors:['Oh no sign-in failed']}
+                        return{ errors:['Oh no sign-in failed'] }
                     });
                 }else{
                     history.push('/');
                     console.log(`${emailAddress} was sucessfully signed-in!`)
                 }
             })
-            .catch( err=>{console.log(err)});
+            .catch( err =>{
+                console.log(err)});
         }
 //stores user input
 

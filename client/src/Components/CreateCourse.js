@@ -13,12 +13,12 @@ const CreateCourse =() => {
     const [description, setDescription] = useState('');
     const [estimatedTime, setEstimatedTime] = useState('');
     const [materialsNeeded, setMaterialsNeeded] = useState('');
-    const [ userId ] = useState(authenticatedUser.user.id);
+    const [ userId ] = useState(authenticatedUser.id);///
     const [errors, setErrors] = useState([]);
 
 //passes the create course function
 const submit =() =>{
-    const emailAddress = authenticatedUser.user.emailAddress;
+    const emailAddress = authenticatedUser.emailAddress;
     const password = authenticatedUser.clientPassword;
     const course = {
         title,
@@ -36,16 +36,13 @@ const submit =() =>{
                 history.push('/')
             }
         })
-        //.catch((err) =>{console.log(err)
-        //});
-
 }
 
 //stores the user input
 const change =(e)=>{
-    if(e.target.name ==='title'){
+    if(e.target.name ==='courseTitle'){
         setTitle(e.target.value)
-    }else if (e.target.name ==='description'){
+    }else if (e.target.name ==='courseDescription'){
         setDescription(e.target.value)
     }else if (e.target.name === 'estimatedTime'){
         setEstimatedTime(e.target.value)
@@ -68,25 +65,45 @@ return (
                 cancel={cancel}
                 errors={errors}
                 submit={submit}
-                submitButtonText =" Create Course"
+                submitButtonText ="Create Course"
                 elements ={()=>(
                 <React.Fragment>
-                <div class="main--flex">
+                <div className="main--flex">
                         <div>
-                        <label hmtlFor="courseTitle">Course Title</label>
-                        <input id="courseTitle" name="courseTitle" type="text" onChange={change} value={title}/>
+                        <label hmtlfor="courseTitle">Course Title</label>
+                        <input 
+                        id="courseTitle" 
+                        name="courseTitle" 
+                        type="text" 
+                        onChange={change} 
+                        value={title}/>
 
-                        <p>By: {authenticatedUser.user.firstName} {authenticatedUser.user.lastName}</p>
+                        <p>By: {authenticatedUser.firstName} {authenticatedUser.lastName}</p>
 
                         <label htmlFor="courseDescription">Course Description</label>
-                        <textarea id="courseDescription" name="courseDescription" type="text" onChange={change} value={description}></textarea>
+                        <textarea 
+                        id="courseDescription" 
+                        name="courseDescription" 
+                        type="text" 
+                        onChange={change} 
+                        value={description}/>
                     </div>
                     <div>
                         <label htmlFor="estimatedTime">Estimated Time</label>
-                        <input id="estimatedTime" name="estimatedTime" type="text" onChange={change} value={estimatedTime}/>
+                        <input 
+                        id="estimatedTime" 
+                        name="estimatedTime"
+                        type="text" 
+                        onChange={change} 
+                        value={estimatedTime}/>
 
                         <label htmlFor="materialsNeeded">Materials Needed</label>
-                        <textarea id="materialsNeeded" name="materialsNeeded" type="text" onChange={change} value={materialsNeeded}/>
+                        <textarea 
+                        id="materialsNeeded" 
+                        name="materialsNeeded" 
+                        type="text" 
+                        onChange={change} 
+                        value={materialsNeeded}/>
                     </div>
                 </div>
                 </React.Fragment>

@@ -21,7 +21,7 @@ export default class Data {
 
             //requiresAuth
             if(requiresAuth){
-             const encodedCredentials = btoa(`${credentials.emailAddress}: ${credentials.password}`);
+             const encodedCredentials = btoa(`${credentials.emailAddress}:${credentials.password}`);
                 options.headers['Authorization'] = `Basic ${encodedCredentials}`;
             }
             //fetch return the new url  with the diffrent setting apply to the request (options)

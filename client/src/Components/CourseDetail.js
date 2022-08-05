@@ -24,9 +24,9 @@ const CourseDetail = (props) => {
 
     //Deletes the selected course
     const handleDelete = () =>{
-        const emailAddress = authenticatedUser.user.emailAddress;
+        const emailAddress = authenticatedUser.emailAddress;
         const password =authenticatedUser.clientPassword;
-        context.data.courseDelete(id, emailAddress, password)
+        context.data.deleteCourse(id, emailAddress, password)
             .then(
                 console.log('Course Deleted'),
                 history.push('')
@@ -38,7 +38,7 @@ return(
     <main>
     <div className="actions--bar">
         <div className="wrap">
-        {authenticatedUser && course.userId === authenticatedUser.user.id?(
+        {authenticatedUser && course.userId === authenticatedUser.id?(
         <React.Fragment>
             <Link className="button" to={`/courses/${id}/update`}>Update Course</Link>
             <button className="button" onClick={handleDelete}>Delete Course</button>
