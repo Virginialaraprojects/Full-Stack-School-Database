@@ -27,7 +27,7 @@ const UpdateCourse =() => {
             setTitle(res.title);
             setDescription(res.description);
             setEstimatedTime(res.estimatedTime);
-            setMaterialsNeeded(res.setMaterialsNeeded);
+            setMaterialsNeeded(res.materialsNeeded);
             }
         })
 

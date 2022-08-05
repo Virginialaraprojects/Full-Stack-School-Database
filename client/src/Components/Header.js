@@ -6,7 +6,7 @@ import { Context } from '../Context';
 const Header =() =>{
     const { authenticatedUser } = useContext(Context);
 
-//renders the top menu button for signing in, signup and signing out
+//renders the top menu button for signing in, signup and signing out and the user if authenticated
 return(
     <header>
             <div className="wrap header--flex">

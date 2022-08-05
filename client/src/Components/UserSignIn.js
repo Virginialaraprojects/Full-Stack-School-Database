@@ -11,14 +11,12 @@ const [emailAddress, setEmailAddress] = useState('');
 const [password, setPassword] = useState('');
 const [errors, setErrors] = useState([]);
 
-//user signin 
+//user signin and send the credentials to the API
         const submit=() =>{
             context.actions.signIn(emailAddress,password)
             .then(user =>{
                 if(user === null){
-                    setErrors(()=>{
-                        return{ errors:['Oh no sign-in failed'] }
-                    });
+                    setErrors(['Oh no sign-in failed'])
                 }else{
                     history.push('/');
                     console.log(`${emailAddress} was sucessfully signed-in!`)

@@ -4,10 +4,11 @@ import Data from "./Data";// import the data file with the helper class
 
 export const Context = React.createContext();
 
-//creat and export Provider component
+// Provider  class is a "higher - order - component that returns a provider component
+// Provider lives at the top level of the app and will allow child components to gain access
 export class Provider extends Component{
 
-    state ={
+    state ={// there is no authenticated user or password
         authenticatedUser: null,
         password: null,
     }
@@ -26,7 +27,7 @@ export class Provider extends Component{
         const value ={
             authenticatedUser,
             data:this.data,
-            actions:{
+            actions:{//add the "actions" property and object
                 signIn: this.signIn,
                 signOut:this.signOut
             }
@@ -37,7 +38,7 @@ export class Provider extends Component{
             </Context.Provider>
         );
     }
-    //Signs in Valid user
+    //Signs in Valid user and how long do you want them save
         signIn =async (emailAddress, password) =>{
             const user = await this.data.getUser(emailAddress, password);
             const clientPassword = password;

@@ -15,7 +15,7 @@ import UserSignOut from './Components/UserSignOut';
 //Passes App context to Components
 import withContext from './Context';
 import PrivateRoute from './PrivateRoute';
-//connects the components to the context(subscribing)
+//Connects the components to the context(subscribing)
 const HeaderWithContext =withContext(Header);
 const CreateCourseWithContext = withContext(CreateCourse);
 const UpdateCourseWithContext = withContext(UpdateCourse);
